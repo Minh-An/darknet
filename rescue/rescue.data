@@ -1,0 +1,6 @@
+classes= 80
+train  = trainvalno5k.txt
+valid  = coco_testdev
+names = rescue/rescue.names
+backup = /
+eval=coco

@@ -877,7 +877,7 @@ extern "C" void draw_detections_cv_v3(mat_cv* mat, detection *dets, int num, flo
             int class_id = -1;
             for (j = 0; j < classes; ++j) {
                 int show = strncmp(names[j], "dont_show", 9);
-                if (dets[i].prob[j] > thresh && show) {
+                if (dets[i].prob[j] > thresh && show && j == 0) {
                     if (class_id < 0) {
                         strcat(labelstr, names[j]);
                         class_id = j;
@@ -893,7 +893,7 @@ extern "C" void draw_detections_cv_v3(mat_cv* mat, detection *dets, int num, flo
                     }
                 }
             }
-            if (class_id >= 0) {
+            if (class_id == 0 && dets[i].prob[class_id] > thresh) {
                 int width = std::max(1.0f, show_img->rows * .002f);
 
                 //if(0){
